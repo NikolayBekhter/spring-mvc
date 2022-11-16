@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+</head>
+<body>
+<h1>PRODUCT LIST</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>TITLE</th>
+    </tr>
+    <tr th:each="s : ${productList}">
+        <td th:text="${s.id}"></td>
+        <td>
+            <a th:href = "@{http://localhost:8180/app/products/{id}(id = ${s.getId()})}" th:text="${s.title}">product</a>
+        </td>
+        <td>
+            <a th:href="@{http://localhost:8180/app/products/delete}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<h1 th:text="${productList.size()}"></h1>
+<p>Add the product <a href = "/app/products/add_product">here</a></p>
+
+</body>
+</html>
